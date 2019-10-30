@@ -20,6 +20,8 @@ History:
                    2)add SM4_SelfCheck function
 ************************************************************/
 
+#pragma once
+
 //rotate n bits to the left in a 32bit buffer
 #define SM4_Rotl32(buf, n) (((buf) << n) | ((buf) >> (32 - n)))
 

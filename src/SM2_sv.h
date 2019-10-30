@@ -22,6 +22,8 @@
     license which may be obtained from Shamus Software Ltd.
 **************************************************************************/
 
+#pragma once
+
 #include <miracl.h>
 
 #define SM2_WORDSIZE 8

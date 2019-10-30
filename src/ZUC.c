@@ -648,3 +648,8 @@ int ZUC_SelfCheck()
 
 	return 0;
 }
+
+int main(void)
+{
+	return ZUC_SelfCheck();
+}

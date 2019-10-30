@@ -23,6 +23,8 @@ Function List:
 15.ZUC_Integrity         // the ZUC-based integrity algorithm
 **************************************************************************/
 
+#pragma once
+
 unsigned char ZUC_S0[256] = {
 		0x3e, 0x72, 0x5b, 0x47, 0xca, 0xe0, 0x00, 0x33, 0x04, 0xd1, 0x54, 0x98, 0x09, 0xb9, 0x6d, 0xcb,
 		0x7b, 0x1b, 0xf9, 0x32, 0xaf, 0x9d, 0x6a, 0xa5, 0xb8, 0x2d, 0xfc, 0x1d, 0x08, 0x53, 0x03, 0x90,
@@ -84,3 +86,4 @@ void ZUC_Work(unsigned int LFSR_S[], unsigned int BR_X[], unsigned int F_R[], un
 void ZUC_GenKeyStream(unsigned char k[], unsigned char iv[], unsigned int KeyStream[], int KeyStreamLen);
 void ZUC_Confidentiality(unsigned char CK[], unsigned int COUNT, unsigned char BEARER, unsigned char DIRECTION, unsigned int IBS[], int LENGTH, unsigned int OBS[]);
 unsigned int ZUC_Integrity(unsigned char IK[], unsigned int COUNT, unsigned char BEARER, unsigned char DIRECTION, unsigned int M[], int LENGTH);
+int ZUC_SelfCheck();

@@ -192,3 +192,8 @@ int SM4_SelfCheck()
 
 	return 0;
 }
+
+int main(void)
+{
+	return SM4_SelfCheck();
+}

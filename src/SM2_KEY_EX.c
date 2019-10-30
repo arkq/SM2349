@@ -165,8 +165,8 @@ void SM3_Z(unsigned char ID[], unsigned short int ELAN, epoint *pubKey, unsigned
 	epoint_get(pubKey, x, y);
 	big_to_bytes(SM2_NUMWORD, x, Px, 1);
 	big_to_bytes(SM2_NUMWORD, y, Py, 1);
-	memcpy(IDlen, &(unsigned char)ELAN + 1, 1);
-	memcpy(IDlen + 1, &(unsigned char)ELAN, 1);
+	IDlen[0] = ELAN >> 8;
+	IDlen[1] = ELAN & 0xFF;
 	SM3_init(&md);
 	SM3_process(&md, IDlen, 2);
 	SM3_process(&md, ID, ELAN / 8);
@@ -743,4 +743,9 @@ int SM2_KeyEX_SelfTest()
 	free(KA);
 	free(KB);
 	return 0;
+}
+
+int main(void)
+{
+	return SM2_KeyEX_SelfTest();
 }

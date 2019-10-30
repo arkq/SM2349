@@ -24,6 +24,8 @@
                      2)add SM3_SelfTest function
 ************************************************************************/
 
+#pragma once
+
 #define SM3_len 256
 #define SM3_T1  0x79CC4519
 #define SM3_T2  0x7A879D8A

@@ -26,6 +26,8 @@ Notes:
   The MIRACL system must be initialized before attempting to use any other MIRACL routines.
 **************************************************************************/
 
+#pragma once
+
 #include <miracl.h>
 
 #define SM2_WORDSIZE 8

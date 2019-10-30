@@ -431,3 +431,8 @@ int SM2_ENC_SelfTest()
 
 	return 0;
 }
+
+int main(void)
+{
+	return SM2_ENC_SelfTest();
+}
