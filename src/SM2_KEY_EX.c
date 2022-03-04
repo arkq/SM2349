@@ -53,7 +53,7 @@ int SM2_W(big n)
 
 	w = logb2(para_n); //approximate integer log to the base 2 of para_n
 	expb2(w, n1);			 //n1=2^w
-	if (compare(para_n, n1) == 1)
+	if (mr_compare(para_n, n1) == 1)
 		w++;
 	if ((w % 2) == 0)
 		w = w / 2 - 1;
@@ -90,7 +90,7 @@ int Test_Point(epoint *point)
 	add(x, para_b, x);				//x=x^3+ax+b
 	divide(x, para_p, tmp);		//x=x^3+ax+b mod p
 	power(y, 2, para_p, y);		//y=y^2 mod p
-	if (compare(x, y) != 0)
+	if (mr_compare(x, y) != 0)
 		return 1;
 	return 0;
 }
@@ -126,7 +126,7 @@ int Test_PubKey(epoint *pubKey)
 
 	//test if x<p     and      y<p   both hold
 	epoint_get(pubKey, x, y);
-	if ((compare(x, para_p) != -1) || (compare(y, para_p) != -1))
+	if ((mr_compare(x, para_p) != -1) || (mr_compare(y, para_p) != -1))
 		return ERR_NOT_VALID_ELEMENT;
 
 	if (Test_Point(pubKey) != 0)

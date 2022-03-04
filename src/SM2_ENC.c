@@ -58,7 +58,7 @@ int Test_Point(epoint *point)
 	add(x, para_b, x);				//x=x^3+ax+b
 	divide(x, para_p, tmp);		//x=x^3+ax+b mod p
 	power(y, 2, para_p, y);		//y=y^2 mod p
-	if (compare(x, y) != 0)
+	if (mr_compare(x, y) != 0)
 		return ERR_NOT_VALID_POINT;
 	return 0;
 }
@@ -94,7 +94,7 @@ int Test_PubKey(epoint *pubKey)
 
 	//test if x<p      and     y<p   both hold
 	epoint_get(pubKey, x, y);
-	if ((compare(x, para_p) != -1) || (compare(y, para_p) != -1))
+	if ((mr_compare(x, para_p) != -1) || (mr_compare(y, para_p) != -1))
 		return ERR_NOT_VALID_ELEMENT;
 
 	if (Test_Point(pubKey) != 0)

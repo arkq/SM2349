@@ -98,7 +98,7 @@ int Test_Point(epoint *point)
 	add(x, b, x);				 //x=x^3+ax+b
 	divide(x, p, tmp);	 //x=x^3+ax+b mod p
 	power(y, 2, p, y);	 //y=y^2 mod p
-	if (compare(x, y) != 0)
+	if (mr_compare(x, y) != 0)
 		return ERR_NOT_VALID_POINT;
 
 	return 0;
@@ -135,7 +135,7 @@ int Test_PubKey(epoint *pubKey)
 
 	//test if x<p      and y<p     both hold
 	epoint_get(pubKey, x, y);
-	if ((compare(x, p) != -1) || (compare(y, p) != -1))
+	if ((mr_compare(x, p) != -1) || (mr_compare(y, p) != -1))
 		return ERR_NOT_VALID_ELEMENT;
 
 	if (Test_Point(pubKey) != 0)
@@ -164,7 +164,7 @@ int Test_Zero(big x)
 {
 	big zero;
 	zero = mirvar(0);
-	if (compare(x, zero) == 0)
+	if (mr_compare(x, zero) == 0)
 		return 1;
 	return 0;
 }
@@ -183,7 +183,7 @@ int Test_Zero(big x)
 int Test_n(big x)
 {
 	//      bytes_to_big(32,SM2_n,n);
-	if (compare(x, n) == 0)
+	if (mr_compare(x, n) == 0)
 		return 1;
 	return 0;
 }
@@ -208,7 +208,7 @@ int Test_Range(big x)
 	convert(1, one);
 	decr(n, 1, decr_n);
 
-	if ((compare(x, one) < 0) | (compare(x, decr_n) > 0))
+	if ((mr_compare(x, one) < 0) | (mr_compare(x, decr_n) > 0))
 		return 1;
 	return 0;
 }
@@ -443,7 +443,7 @@ int SM2_Verify(unsigned char *message, int len, unsigned char ZA[], unsigned cha
 	divide(RR, n, rem);
 
 	free(M);
-	if (compare(RR, r) == 0)
+	if (mr_compare(RR, r) == 0)
 		return 0;
 
 	return ERR_DATA_MEMCMP;

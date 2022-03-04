@@ -1,0 +1,3 @@
+[submodule "miracl"]
+	path = miracl
+	url = https://github.com/miracl/MIRACL.git
